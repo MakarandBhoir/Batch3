@@ -22,6 +22,6 @@ public class ArrayListDemo {
 		list.add(1, "Test");
 		
 		System.out.println(list);
-		
+		System.out.println(list.get(2));
 	}
 }
