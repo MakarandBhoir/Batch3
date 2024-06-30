@@ -11,9 +11,9 @@ public class TreeSetDemo {
 		
 		//When we add object of Employee into TreeSet then Employee should implement Comparable interface
 		TreeSet<Employee> ts = new TreeSet<Employee>();
+		ts.add(e3);
 		ts.add(e1);
 		ts.add(e2);
-		ts.add(e3);
 		ts.add(e4);
 		
 		for (Employee e : ts) {
