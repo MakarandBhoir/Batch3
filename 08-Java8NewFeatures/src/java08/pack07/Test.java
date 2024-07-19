@@ -5,6 +5,10 @@ import java.util.function.Predicate; // boolean test(T t);
 import java.util.function.Supplier; // T get();
 import java.util.function.Function; // R apply(T t);
 
+import java.util.function.BiConsumer; // void accept(T t, U u);
+import java.util.function.BiPredicate; // boolean test(T t, U u);
+import java.util.function.BiFunction; // R apply(T t, U u);
+
 public class Test {
 	public static void main(String[] args) {
 		//Consumer<String> ref1 = (String str) -> System.out.println(str.toUpperCase());
