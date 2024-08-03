@@ -1,0 +1,90 @@
+SQL - Structure Query Language. SQL is not database. It is just query language.
+---------------------------------------------
+
+DDL - (Data Definition Language)
+	- Create
+	- Drop
+	- Alter
+	- Truncate
+	
+DML - (Data Manipulation Language)
+	- Insert
+	- Update
+	- Delete
+
+DCL - (Data Control Language)
+	- Grant
+	- Revoke
+
+TCL - (Transaction Control Language)
+	- Commit
+	- Rollback
+
+DQL - (Data Query Language) 
+	- Select
+
+-------------------------------------------
+
+Types of constraints
+---------------------
+Primary Key
+Referential Integrity ( Foreign Key )
+Unique
+Check
+Not Null
+---------------------------------------------
+Column Level definition of constraints
+Table Level definition of constraints
+---------------------------------------------
+Drop Table Students
+
+Create Table Students
+(
+	Student_Id Number(5),
+	First_Name Varchar2(35),
+	Last_Name Varchar2(35),
+	Email Varchar2(50),
+	DOB Date,
+	Score Number(3),
+	Dept_Id Number(5)
+)
+
+drop table dept
+
+Create Table Dept
+(
+	Dept_Id Number(5) Primary Key,
+	Dept_Name Varchar2(50) Unique
+)
+
+Alter Table Students
+Add Constraint student_id_pk Primary Key (Student_Id)
+
+Alter Table Students
+Add Constraint dept_id_fk Foreign Key (Dept_Id)
+References Dept (Dept_Id)
+
+Insert Into Dept (Dept_Name, Dept_id)
+values('IT', 10)
+
+Insert Into Students(Student_Id, First_Name, last_name, email, dob, score, dept_id)
+values (1001, 'Vansh', 'Gharat', 'vansh.gharat@gmail.com', null, 7.5, 10)
+
+Insert Into Students(Student_Id, First_Name, last_name, email, dob, score, dept_id)
+values (1002, 'Sahil', 'Patil', 'sahil.patil@gmail.com', null, 7.5, 10)
+
+Select Dept_Id, Dept_Name From Dept;
+Select Student_Id, First_Name, Score, Dept_Id From Students;
+
+
+
+
+
+
+
+
+
+
+
+
+
