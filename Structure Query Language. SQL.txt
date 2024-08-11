@@ -67,6 +67,10 @@ References Dept (Dept_Id)
 Insert Into Dept (Dept_Name, Dept_id)
 values('IT', 10)
 
+Insert Into Dept (Dept_Name, Dept_id)
+values('CM', 50)
+
+
 Insert Into Students(Student_Id, First_Name, last_name, email, dob, score, dept_id)
 values (1001, 'Vansh', 'Gharat', 'vansh.gharat@gmail.com', null, 7.5, 10)
 
@@ -75,6 +79,160 @@ values (1002, 'Sahil', 'Patil', 'sahil.patil@gmail.com', null, 7.5, 10)
 
 Select Dept_Id, Dept_Name From Dept;
 Select Student_Id, First_Name, Score, Dept_Id From Students;
+
+-------------------------------------------------------------------------------------
+Group function
+-----------------
+count
+max
+min
+avg
+sum
+-------------------------------------------
+
+select employee_id,first_name, last_name, email, department_id
+from employees
+where department_id = 50;
+
+select deptid, deptname
+from departments
+where deptid=50;
+
+
+Insert Into Students(Student_Id, First_Name, last_name, email, dob, dept_id)
+Select Employee_Id, First_Name, Last_name, Email, Hire_Date, department_id
+From Employees
+Where department_id=50;
+
+-----------------------------------------------------------------
+select
+from
+where
+group by
+having
+order by
+-----------------------------------------------------------------
+
+select avg(salary) from employees;
+
+select department_id, avg(salary) from employees
+group by department_id;
+
+select department_id, avg(salary) from employees
+group by department_id
+order by department_id Asc;
+
+select department_id, avg(salary) from employees
+group by department_id
+order by department_id Desc;
+
+select department_id, avg(salary) 
+from employees
+where department_id is not null
+group by department_id
+order by department_id Desc;
+
+
+select department_id, count(*), avg(salary)
+from employees
+where department_id is not null
+group by department_id
+having count(*) >= 5
+order by department_id Desc;
+
+
+select employee_id, last_name, salary
+from employees
+where salary >= 5000 and salary < 10000
+order by salary desc;
+
+
+select employee_id, last_name, salary, department_id
+from employees
+where department_id = 10 or department_id = 20;
+---------------------------------------------------------------------
+
+
+select * from employees;
+select * from employees order by last_name;
+
+-- Find all employees who works for department 10, 20, 30, 40, 50
+
+select employee_id, last_name, salary, department_id
+from employees
+where department_id = 10 or department_id = 20 or department_id = 30 or department_id = 40 or department_id = 50;
+
+select employee_id, last_name, salary, department_id
+from employees
+where department_id in (10, 20, 30, 40, 50);
+
+-- Find all employees whose salary more that 5000 and less than 7000
+select employee_id, last_name, salary, department_id
+from employees
+where salary >= 5000 and salary <= 7000;
+
+select employee_id, last_name, salary, department_id
+from employees
+where salary between 5000 and 7000;
+
+-- Find all employees whose name begin with 'M'
+
+select employee_id, last_name, salary, department_id
+from employees
+where last_name like 'M%';
+-- % - 0 more more letters
+-- _ - 1 letter
+
+select employee_id, last_name, upper(last_name), salary, department_id
+from employees
+where upper(last_name) like '_A%';
+
+select employee_id, last_name, salary, department_id
+from employees
+where lower(last_name) like '%e%';
+
+-- Find all employees who are getting more salay than Chen's salary
+
+select employee_id, last_name, salary, department_id
+from employees
+where salary > ( select salary from employees where last_name = 'Chen' );
+
+-- single row sub-query -
+-- Operators - >, <, <=, >=, =, <>
+-- multiple row sub-query - 
+-- In, Any, All
+select employee_id, last_name, salary, department_id
+from employees
+where salary > Any ( select salary from employees where last_name = 'Smith' );
+
+select employee_id, last_name, salary, department_id
+from employees
+where salary > All ( select salary from employees where last_name = 'Smith' );
+
+select employee_id, last_name, salary, department_id
+from employees
+where salary IN ( select salary from employees where last_name = 'Smith' );
+
+
+select employee_id, last_name, salary, department_id
+from employees
+where department_id = 50;
+
+select avg(salary) from employees where department_id = 50;
+
+select employee_id, last_name, salary, department_id
+from employees
+where salary < ( select avg(salary) from employees where department_id = 50 ) and department_id=50;
+
+select employee_id, last_name, salary, department_id
+from employees
+where salary > ( select avg(salary) from employees where department_id = 50 ) and department_id=50;
+
+------------------------------------------------------------------------------------------
+
+
+
+
 
 
 
