@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+    <bean id="hello" class="com.infinity.HelloService" scope="prototype">
+    	<property name="user" ref="user"></property>
+    </bean>
+    
+    <bean id="user" class="com.infinity.User" scope="prototype">
+    	<property name="firstName" value="Janmesh"></property>
+    	<property name="lastName" value="Mhatre"></property>
+    </bean>
+    
+    <bean id="userService" class="com.infinity.UserService">
+    	<property name="users">
+    		<list>
+    			<ref bean="user"></ref>
+    		</list>
+    	</property>
+    </bean>
+	
+</beans>
